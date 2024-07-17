@@ -25,7 +25,7 @@ function CreateDeck() {
             <textarea class="form-control" rows="5" name="deck-description" type="text" placeholder="Brief description of the deck" />
             <br />
 
-            <button type="cancel" class="btn btn-secondary">Cancel</button>
+            <Link to="/" button type="cancel" class="btn btn-secondary">Cancel</Link>
             {" "}
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
