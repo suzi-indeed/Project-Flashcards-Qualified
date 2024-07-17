@@ -1,10 +1,9 @@
 import { React, useEffect, useState } from "react";
 import Header from "./Header";
-import NotFound from "./NotFound";
 import DeckList from "./DeckList";
-import DeckInromation from "./DeckInformation";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CreateDeck from "./CreateDeck";
+import DisplayDeck from "./DisplayDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -28,8 +27,8 @@ function Layout() {
 
         <Routes>
           <Route path="decks/new" element={<CreateDeck />} />
-          <Route path="" element={ <DeckList decks={decks} />}
-          />
+          <Route path="decks/:deckId" element={<DisplayDeck decks={decks} />} />
+          <Route path="*" element={ <DeckList decks={decks} />}/>
         </Routes>
 
 
