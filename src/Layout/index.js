@@ -28,24 +28,7 @@ function Layout() {
 
         <Routes>
           <Route path="decks/new" element={<CreateDeck />} />
-          <Route path="" element={
-            <>
-              {/*show the Create Deck button*/}
-              <Link className="btn btn-secondary" to="/decks/new">
-                <i class="oi oi-plus"></i>
-                {' '}
-                Create Deck
-              </Link>
-
-              {/*if there's at least one deck, show the decks*/}
-              {
-                decks.length > 0 ?
-                  <DeckList decks={decks} /> :
-                  <NotFound />
-              }
-
-            </>
-          }
+          <Route path="" element={ <DeckList decks={decks} />}
           />
         </Routes>
 
