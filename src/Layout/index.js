@@ -1,9 +1,10 @@
 import { React, useEffect, useState } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-//import DeckList from "./DeckList";
+import DeckList from "./DeckList";
 import DeckInromation from "./DeckInformation";
-
+import { Link, Route, Routes } from "react-router-dom";
+import CreateDeck from "./CreateDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -25,18 +26,28 @@ function Layout() {
       <Header />
       <div className="container">
 
-        {/*show the Create Deck button*/}
-        <button className="btn btn-secondary"> 
-        <i class="oi oi-plus"></i> Create Deck</button>
+        <Routes>
+          <Route path="decks/new" element={<CreateDeck />} />
+          <Route path="" element={
+            <>
+              {/*show the Create Deck button*/}
+              <Link className="btn btn-secondary" to="/decks/new">
+                <i class="oi oi-plus"></i>
+                {' '}
+                Create Deck
+              </Link>
 
-        <div>DeckList length: {decks.length}</div>
+              {/*if there's at least one deck, show the decks*/}
+              {
+                decks.length > 0 ?
+                  <DeckList decks={decks} /> :
+                  <NotFound />
+              }
 
-        {/*if there's at least one deck, show the decks*/}
-        {
-          decks.length > 0 ?
-            decks.map(deck => <DeckInromation deck={deck} />) :
-            <NotFound />
-        }
+            </>
+          }
+          />
+        </Routes>
 
 
       </div>
