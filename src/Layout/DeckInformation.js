@@ -19,7 +19,7 @@ function DeckInromation({ deck }) {
                 </Link>
 
                 {/*Study button*/}
-                <Link to={`/decks/${deck.id}/edit`}>
+                <Link to={`/decks/${deck.id}/study`}>
                 <button className="btn btn-primary" style={{ margin: "4px" }}><i class="oi oi-book"></i> Study</button>
                 </Link>
 

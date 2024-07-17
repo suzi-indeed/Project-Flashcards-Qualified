@@ -3,6 +3,7 @@ import DeckInromation from './DeckInformation';
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import DisplayCard from './DisplayCard';
 import EditCard from './EditCard';
+import StudyDeck from './StudyDeck';
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
@@ -23,6 +24,7 @@ function DisplayDeck({ decks }) {
         </ol>
       </nav>
       <Routes>
+        <Route path="study" element={<StudyDeck decks={decks} />} />
         <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
         <Route path="" element={
           <>
