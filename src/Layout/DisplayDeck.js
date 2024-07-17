@@ -2,6 +2,7 @@ import React from 'react';
 import DeckInromation from './DeckInformation';
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import DisplayCard from './DisplayCard';
+import EditCard from './EditCard';
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
@@ -13,10 +14,24 @@ function DisplayDeck({ decks }) {
 
   return (
     <>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">
+            <i class="oi oi-home"></i> Home
+          </a></li>
+          <li class="breadcrumb-item active" aria-current="page">{`${deck.name}`}</li>
+        </ol>
+      </nav>
       <Routes>
+        <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
         <Route path="" element={
           <>
             <DeckInromation deck={deck} />
+            {/* TODO: 
+            remove "View" button
+            add "Edit" button
+            add "Add Cards" button
+            */}
             <br />
             <h3>Cards</h3>
             <div style={{ display: "flex" }} />
