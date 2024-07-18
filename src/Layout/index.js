@@ -13,7 +13,6 @@ function Layout() {
     async function loadDecks() {
       const response = await fetch("http://localhost:8080/decks?_embed=cards");
       const data = await response.json();
-      console.log(data);
       setDecks(data);
     }
     loadDecks();
