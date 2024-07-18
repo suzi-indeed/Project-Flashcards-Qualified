@@ -5,6 +5,7 @@ import DisplayCard from './DisplayCard';
 import EditCard from './EditCard';
 import StudyDeck from './StudyDeck';
 import EditDeck from './EditDeck';
+import AddCard from './AddCard';
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
@@ -29,14 +30,10 @@ function DisplayDeck({ decks }) {
         <Route path="study" element={<StudyDeck decks={decks} />} />
         <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
         <Route path="edit" element={<EditDeck deck={deck}/>}/>
+        <Route path="cards/new" element={<AddCard deck={deck}/>}/>
         <Route path="" element={
           <>
             <DeckInromation deck={deck} enableEditing={true} />
-            {/* TODO: 
-            remove "View" button
-            add "Edit" button
-            add "Add Cards" button
-            */}
             <br />
             <h3>Cards</h3>
             <div style={{ display: "flex" }} />

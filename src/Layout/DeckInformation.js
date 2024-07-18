@@ -15,7 +15,7 @@ function DeckInromation({ deck, enableEditing }) {
 
                 {enableEditing ?
                     <>
-                    {/*Edit button - TODO: build the screen "Edit Deck"*/}
+                    {/*Edit button*/}
                         <Link to={`/decks/${deck.id}/edit`}>
                             <button className="btn btn-secondary" style={{ margin: "4px" }}> <i className="oi oi-pencil"></i>
                                 {" "}Edit
