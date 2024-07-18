@@ -1,7 +1,15 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { deleteDeck } from "../utils/api";
 
-function DeckInromation({ deck, enableEditing }) {
+function DeckInromation({ deck, enableEditing, decks }) {
+    async function handleDeleteDeck(){
+    //using: export async function deleteDeck(deckId, signal) {
+    await deleteDeck(deck.id);
+    decks.splice(decks.indexOf(deck), 1);
+    //refresh the current page
+    window.location.reload(); 
+    }
+
     return (
         <div className="card">
             <div className="card-body" >
@@ -47,7 +55,7 @@ function DeckInromation({ deck, enableEditing }) {
                 }
 
                 {/*Delete button*/}
-                <button className="btn btn-danger" style={{ float: "right" }}> <i className="oi oi-trash"></i> </button>
+                <button className="btn btn-danger" style={{ float: "right" }} onClick={handleDeleteDeck}> <i className="oi oi-trash"></i> </button>
             </div>
             <i className="bi bi-arrow-clockwise"></i>
         </div>

@@ -33,7 +33,7 @@ function DisplayDeck({ decks }) {
         <Route path="cards/new" element={<AddCard deck={deck}/>}/>
         <Route path="" element={
           <>
-            <DeckInromation deck={deck} enableEditing={true} />
+            <DeckInromation deck={deck} enableEditing={true} decks={decks}/>
             <br />
             <h3>Cards</h3>
             <div style={{ display: "flex" }} />
