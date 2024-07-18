@@ -6,10 +6,10 @@ function EditDeck({ deck }) {
 const [name, setName] = React.useState(deck.name);
 const [description, setDescription] = React.useState(deck.description);
 
-    function onSubmit(){
+    async function onSubmit(){
         deck.name = name;
         deck.description = description;
-        updateDeck(deck); //export async function updateDeck(updatedDeck, signal) {
+        await updateDeck(deck); //export async function updateDeck(updatedDeck, signal) {
     }
 
     return (
