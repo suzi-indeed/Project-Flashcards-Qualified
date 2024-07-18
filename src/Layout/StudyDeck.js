@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function StudyDeck({decks}) {
-    const [cardIndex,setCardIndex] = useState(0);
-    const [flipped,setFlipped] = useState(false);
+function StudyDeck({ decks }) {
+    const [cardIndex, setCardIndex] = useState(0);
+    const [flipped, setFlipped] = useState(false);
     const [clicked, setClicked] = useState(false);
+    //TODO improvement: clicked is not needed, it can be calculated by checking cardIndex is 0 and flipped is true
 
-    const {deckId} = useParams();
+    const navigate = useNavigate();
+    const { deckId } = useParams();
     const deck = decks.find(deck => deck.id == deckId);
-    if (!deck) {
-        return <p>Deck not found</p>;
-    }
-    {/* TODO: update the breadcrumb navigation bar */}
+
+    {/* TODO: update the breadcrumb navigation bar */ }
 
     {/*instead of: 
         onClick={()=>setFlipped(!flipped)}
@@ -20,25 +20,67 @@ function StudyDeck({decks}) {
     const handleClick = () => {
         setFlipped(!flipped);
         if (!clicked) {
-          console.log('This will only happen on the first click');
-          setClicked(true); //this will only happen on the first click, and will make the next button show
+            setClicked(true); //this will only happen on the first click, and will make the next button show
         }
-      };
+    };
+
+    // const isLastCard = cardIndex === deck.cards.length;
+
+    // useEffect(() => {
+    //     if(!isLastCard) {
+    //         return;
+    //     }
+
+    //     const shouldRestart = window.confirm("Restart cards?");
+    //     if (shouldRestart) {
+    //         setCardIndex(0);
+    //         setFlipped(false);
+    //         setClicked(false);
+    //     } else {
+    //         navigate('/'); //go to home screen
+    //     }
+    // }, [isLastCard]);
+
+    function askUserIfRestart() {
+        const shouldRestart = window.confirm("Restart cards?");
+        if (shouldRestart) {
+            setCardIndex(0);
+            setFlipped(false);
+            setClicked(false);
+        } else {
+            navigate('/'); //go to home screen
+        }
+    }
+
+    function handleNextClick() {
+        if (cardIndex === deck.cards.length - 1) {
+            askUserIfRestart();
+        } else {
+            setCardIndex(cardIndex + 1);
+        }
+    }
+
+    if (!deck) {
+        return <p>Deck not found</p>;
+    }
 
     return (
         <div>
             <h3>Study: {deck.name}</h3>
             <div className="card">
                 <div className="card-body" >
-                    <h4>Card {cardIndex+1} of {deck.cards.length}</h4>
-                    <p>{flipped ? deck.cards[cardIndex].back : deck.cards[cardIndex].front}</p>
+                    <h4>Card {cardIndex + 1} of {deck.cards.length}</h4>
+                    <p>{flipped ? deck.cards[cardIndex]?.back : deck.cards[cardIndex]?.front}</p>
                     <button type="button" class="btn btn-secondary" onClick={handleClick}>Flip</button>
                     {' '}
-                    {clicked && <button type="button" class="btn btn-primary" onClick={()=>setCardIndex(cardIndex+1)}>Next</button>}
+                    {clicked && <button type="button" class="btn btn-primary" onClick={handleNextClick}>Next</button>}
                 </div>
             </div>
         </div>
     )
+
+
+
 }
 
 export default StudyDeck;

@@ -1,27 +1,50 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function DeckInromation({ deck }) {
+function DeckInromation({ deck, enableEditing }) {
     return (
         <div className="card">
             <div className="card-body" >
-                <div style={{ display: "flex", justifyContent: "space-between",alignItems: "center" }}>
-                        {/*Header and counter*/}
-                        <h5 class="card-title">{deck.name} </h5>
-                        <p>{deck.cards.length} cards</p>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    {/*Header and counter*/}
+                    <h5 class="card-title">{deck.name} </h5>
+                    <p>{deck.cards.length} cards</p>
                 </div>
 
                 <p className="card-text">{deck.description}</p>
 
-                {/*View button*/}
-                <Link to={`/decks/${deck.id}`}>
-                        <button className="btn btn-secondary" style={{ margin: "4px" }}> <i className="oi oi-eye"></i> View</button>
-                </Link>
+                {enableEditing ?
+                    <>
+                    {/*Edit button - TODO: build the screen "Edit Deck"*/}
+                        <Link to={`/decks/${deck.id}/edit`}>
+                            <button className="btn btn-secondary" style={{ margin: "4px" }}> <i className="oi oi-pencil"></i>
+                                {" "}Edit
+                            </button>
+                        </Link>
+                    </> :
+                    <Link to={`/decks/${deck.id}`}>
+                        <button className="btn btn-secondary" style={{ margin: "4px" }}> <i className="oi oi-eye"></i>
+                            View
+                        </button>
+                    </Link>
+                }
 
                 {/*Study button*/}
                 <Link to={`/decks/${deck.id}/study`}>
-                <button className="btn btn-primary" style={{ margin: "4px" }}><i class="oi oi-book"></i> Study</button>
+                    <button className="btn btn-primary" style={{ margin: "4px" }}><i class="oi oi-book"></i> Study</button>
                 </Link>
+
+                {/*Add Cards button - TODO: build the screen "Add Card"*/}
+                {enableEditing ?
+                    <>
+                        <Link className="btn btn-primary" style={{ margin: "4px" }} to={`/decks/${deck.id}/cards/new`} >
+                            <i class="oi oi-plus"></i>
+                            {' '}
+                            Add Cards
+                        </Link>
+                    </>
+                    : <></>
+                }
 
                 {/*Delete button*/}
                 <button className="btn btn-danger" style={{ float: "right" }}> <i className="oi oi-trash"></i> </button>

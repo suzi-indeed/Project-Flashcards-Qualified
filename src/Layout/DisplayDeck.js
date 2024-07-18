@@ -4,6 +4,7 @@ import { Link, Route, Routes, useParams } from "react-router-dom";
 import DisplayCard from './DisplayCard';
 import EditCard from './EditCard';
 import StudyDeck from './StudyDeck';
+import EditDeck from './EditDeck';
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
@@ -24,11 +25,13 @@ function DisplayDeck({ decks }) {
         </ol>
       </nav>
       <Routes>
+        {/* "decks/:deckId/*" */}
         <Route path="study" element={<StudyDeck decks={decks} />} />
         <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
+        <Route path="edit" element={<EditDeck deck={deck}/>}/>
         <Route path="" element={
           <>
-            <DeckInromation deck={deck} />
+            <DeckInromation deck={deck} enableEditing={true} />
             {/* TODO: 
             remove "View" button
             add "Edit" button
