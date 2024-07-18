@@ -19,9 +19,6 @@ function EditCard({ deck }) {
         await updateCard(card);
         navigate(`/decks/${deck.id}`);
     }
-    //update the card in the deck
-    //then call the updateDeck function to update the deck
-    //then navigate to the deck
 
     if (!card) {
         return <p>Card not found</p>;
@@ -45,7 +42,6 @@ function EditCard({ deck }) {
         <Link to={`/decks/${deck.id}`} button type="cancel" class="btn btn-secondary">Cancel</Link>
         {" "}
 
-        {/* TODO: submit must save the data before going back to the deck page*/}
         <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Submit</button>
     </>
 }
