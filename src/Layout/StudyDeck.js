@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 function StudyDeck({ decks }) {
     const [cardIndex, setCardIndex] = useState(0);
@@ -62,6 +62,18 @@ function StudyDeck({ decks }) {
 
     if (!deck) {
         return <p>Deck not found</p>;
+    }
+    if (deck.cards.length < 3) {
+        return <div>
+            <h3>Study: {deck.name}</h3>
+            <h4>Not Enough cards.</h4>
+            <p>You need at least 3 cards to study. There are {deck.cards.length} cards in this deck.</p>
+            <Link className="btn btn-primary" style={{ margin: "4px" }} to={`/decks/${deck.id}/cards/new`} >
+                <i class="oi oi-plus"></i>
+                {' '}
+                Add Cards
+            </Link>
+        </div>
     }
 
     return (
