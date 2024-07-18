@@ -8,7 +8,7 @@ function DeckInromation({ deck, enableEditing }) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     {/*Header and counter*/}
                     <h5 class="card-title">{deck.name} </h5>
-                    <p>{deck.cards.length} cards</p>
+                    <p>{deck.cards?.length ?? 0} cards</p>
                 </div>
 
                 <p className="card-text">{deck.description}</p>

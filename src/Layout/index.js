@@ -25,7 +25,7 @@ function Layout() {
       <div className="container">
 
         <Routes>
-          <Route path="decks/new" element={<CreateDeck />} />
+          <Route path="decks/new" element={<CreateDeck decks={decks}/>} />
           <Route path="decks/:deckId/*" element={<DisplayDeck decks={decks} />} />
           <Route path="*" element={ <DeckList decks={decks} />}/>
         </Routes>

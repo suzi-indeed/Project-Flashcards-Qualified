@@ -37,7 +37,7 @@ function DisplayDeck({ decks }) {
             <br />
             <h3>Cards</h3>
             <div style={{ display: "flex" }} />
-            {deck.cards.map(card => (
+            {deck.cards?.map(card => (
               <DisplayCard card={card} />
             ))}
           </>
