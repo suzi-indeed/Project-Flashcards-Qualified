@@ -1,27 +1,35 @@
 {
   "decks": [
     {
+      "id": 1,
+      "name": "Rendering in React",
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+    },
+    {
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "Third deck",
-      "description": "got pine",
-      "id": 3
-    },
-    {
-      "name": "birds",
-      "description": "ducks",
-      "id": 6
-    },
-    {
-      "name": "cakes",
-      "description": "eat",
-      "id": 7
     }
   ],
   "cards": [
+    {
+      "id": 1,
+      "front": "Differentiate between Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updates are faster but do not directly update the HTML",
+      "deckId": 1
+    },
+    {
+      "id": 2,
+      "front": "How do you modify the state of a different React component?",
+      "back": "Not at all! State is visible to the component only.",
+      "deckId": 1
+    },
+    {
+      "id": 3,
+      "front": "How do you pass data 'down' to a React child component?",
+      "back": "As properties or props",
+      "deckId": 1
+    },
     {
       "front": "What path will match the follow Route?\n<Route>\n  <NotFound />\n</Route>",
       "back": "All paths. A route with no path matches all URL's",
@@ -35,67 +43,11 @@
       "id": 5
     },
     {
-      "front": "third card",
-      "back": "back",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 9
-    },
-    {
-      "front": "A tiny moss ball",
-      "back": "Marimo",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 10
-    },
-    {
-      "front": "front",
-      "back": "back",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 11
-    },
-    {
-      "front": "add me",
-      "back": "back side",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 12
-    },
-    {
-      "front": "add me 222",
-      "back": "back side 222",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 13
-    },
-    {
-      "front": "add me 3333",
-      "back": "back 3333",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 14
-    },
-    {
-      "front": "1111",
-      "back": "2222",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 15
-    },
-    {
-      "front": "555",
-      "back": "55555",
-      "deckIid": 2,
-      "deckId": 2,
-      "id": 16
-    },
-    {
-      "front": "strawberry\nsponge\nwhipped cream",
-      "back": "short cake",
-      "deckIid": 7,
-      "deckId": 7,
-      "id": 17
+      "cards": [],
+      "front": "b",
+      "back": "b",
+      "deckId": 1,
+      "id": 7
     }
   ]
 }
