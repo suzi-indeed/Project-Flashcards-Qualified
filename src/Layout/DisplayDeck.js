@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DeckInromation from './DeckInformation';
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import DisplayCard from './DisplayCard';
@@ -7,12 +7,22 @@ import StudyDeck from './StudyDeck';
 import EditDeck from './EditDeck';
 import AddCard from './AddCard';
 import DisplayBreadcrumbs from './Breadcrumbs';
+import { readDeck } from "../utils/api";
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
-  const deck = decks.find(deck => deck.id == deckId);
+  //const deck = decks.find(deck => deck.id == deckId);
 
-  if (!deck) {
+  const [deck, setDeck] = useState(loadDeck);
+
+  async function loadDeck() {
+      const deck = await readDeck(deckId);
+      //console.log("deck", deck);
+      setDeck(deck);
+      return deck;
+  }
+
+  if (!deck?.id) {
     return <p>Deck not found</p>;
   }
 
@@ -20,7 +30,7 @@ function DisplayDeck({ decks }) {
     <>
       <Routes>
         {/* "decks/:deckId/*" */}
-        <Route path="study" element={<StudyDeck decks={decks} />} />
+        <Route path="study" element={<StudyDeck decks={decks} deck={deck} />} />
         <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
         <Route path="edit" element={<EditDeck deck={deck} />} />
         <Route path="cards/new" element={<AddCard deck={deck} />} />

@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import DisplayBreadcrumbs from './Breadcrumbs';
 
-function StudyDeck({ decks }) {
+function StudyDeck({ deck }) {
     const [cardIndex, setCardIndex] = useState(0);
     const [flipped, setFlipped] = useState(false);
     const [clicked, setClicked] = useState(false);
     //TODO improvement: clicked is not needed, it can be calculated by checking cardIndex is 0 and flipped is true
 
     const navigate = useNavigate();
-    const { deckId } = useParams();
-    const deck = decks.find(deck => deck.id == deckId);
+    //const { deckId } = useParams();
+    //const deck = decks.find(deck => deck.id == deckId);
 
     {/*instead of: 
         onClick={()=>setFlipped(!flipped)}
@@ -64,8 +64,8 @@ function StudyDeck({ decks }) {
     }
     if (deck.cards.length < 3) {
         return <div>
-            <h3>Study: {deck.name}</h3>
-            <h4>Not Enough cards.</h4>
+            <h3>Study: <span>{deck.name}</span></h3>
+            <h4>Not enough cards.</h4>
             <p>You need at least 3 cards to study. There are {deck.cards.length} cards in this deck.</p>
             <Link className="btn btn-primary" style={{ margin: "4px" }} to={`/decks/${deck.id}/cards/new`} >
                 <i className="oi oi-plus"></i>
