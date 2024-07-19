@@ -2,12 +2,18 @@ import { Link } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 
 function DeckInromation({ deck, enableEditing, decks }) {
-    async function handleDeleteDeck(){
-    //using: export async function deleteDeck(deckId, signal) {
-    await deleteDeck(deck.id);
-    decks.splice(decks.indexOf(deck), 1);
-    //refresh the current page
-    window.location.reload(); 
+    async function handleDeleteDeck() {
+
+        const shouldDelete = window.confirm("Delete this deck? You will not be able to recover it.");
+        if (shouldDelete) {
+            //using: export async function deleteDeck(deckId, signal) {
+            await deleteDeck(deck.id);
+            decks.splice(decks.indexOf(deck), 1);
+            //refresh the current page - TODO: replace with setdDecks in its 2 locations
+            window.location.reload();
+        } else {
+            return;
+        }
     }
 
     return (
@@ -23,7 +29,7 @@ function DeckInromation({ deck, enableEditing, decks }) {
 
                 {enableEditing ?
                     <>
-                    {/*Edit button*/}
+                        {/*Edit button*/}
                         <Link to={`/decks/${deck.id}/edit`}>
                             <button className="btn btn-secondary" style={{ margin: "4px" }}> <i className="oi oi-pencil"></i>
                                 {" "}Edit

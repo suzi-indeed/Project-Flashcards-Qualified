@@ -11,11 +11,6 @@
       "id": 3
     },
     {
-      "name": "4th deck",
-      "description": "cookies",
-      "id": 4
-    },
-    {
       "name": "birds",
       "description": "ducks",
       "id": 6
@@ -94,6 +89,13 @@
       "deckIid": 2,
       "deckId": 2,
       "id": 16
+    },
+    {
+      "front": "strawberry\nsponge\nwhipped cream",
+      "back": "short cake",
+      "deckIid": 7,
+      "deckId": 7,
+      "id": 17
     }
   ]
 }

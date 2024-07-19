@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { deleteCard, readDeck } from "../utils/api";
 
-function Displaycard({ card }) {
+function Displaycard({ card, deck }) {
+    async function handleDeleteCard() {
+        const shouldDelete = window.confirm("Delete this card? You will not be able to recover it.");
+        if (shouldDelete) {
+        // use: export async function deleteCard(cardId, signal) {
+        await deleteCard(card.id);
+        deck.cards.splice(deck.cards.indexOf(card), 1);
+        window.location.reload();
+        }
+        else {
+            return;
+        }
+    }
+
     return (
         <>
             <div className="card">
@@ -17,7 +31,7 @@ function Displaycard({ card }) {
                                     <button className="btn btn-secondary"><i class="oi oi-pencil"></i> Edit</button>
                                 </Link>
                                 {" "}
-                                <button className="btn btn-danger"> <i className="oi oi-trash"></i> </button>
+                                <button className="btn btn-danger" onClick={handleDeleteCard}> <i className="oi oi-trash"></i> </button>
                             </div>
                         </div>
                     </div>
@@ -29,3 +43,5 @@ function Displaycard({ card }) {
     );
 }
 export default Displaycard;
+
+
