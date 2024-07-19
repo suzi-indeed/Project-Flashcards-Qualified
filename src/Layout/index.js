@@ -8,15 +8,10 @@ import { listDecks } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
-  // load data from http://localhost:8080/decks?_embed=cards with useeffect
-  // replace with: export async function listDecks(signal) {
-
   useEffect(() => {
 
     async function loadDecks() {
-      //const response = await fetch("http://localhost:8080/decks?_embed=cards");
       const response = await listDecks();
-      console.log("got this: ",response);
       setDecks(response);
     }
     loadDecks();
@@ -29,9 +24,9 @@ function Layout() {
       <div className="container">
 
         <Routes>
-          <Route path="decks/new" element={<CreateDeck decks={decks}/>} />
+          <Route path="decks/new" element={<CreateDeck decks={decks} />} />
           <Route path="decks/:deckId/*" element={<DisplayDeck decks={decks} />} />
-          <Route path="*" element={ <DeckList decks={decks} />}/>
+          <Route path="*" element={<DeckList decks={decks} />} />
         </Routes>
 
 

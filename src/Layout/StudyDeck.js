@@ -6,39 +6,14 @@ function StudyDeck({ deck }) {
     const [cardIndex, setCardIndex] = useState(0);
     const [flipped, setFlipped] = useState(false);
     const [clicked, setClicked] = useState(false);
-    //TODO improvement: clicked is not needed, it can be calculated by checking cardIndex is 0 and flipped is true
 
     const navigate = useNavigate();
-    //const { deckId } = useParams();
-    //const deck = decks.find(deck => deck.id == deckId);
-
-    {/*instead of: 
-        onClick={()=>setFlipped(!flipped)}
-        a function that also makes the next button visible
-        */}
     const handleClick = () => {
         setFlipped(!flipped);
         if (!clicked) {
             setClicked(true); //this will only happen on the first click, and will make the next button show
         }
     };
-
-    // const isLastCard = cardIndex === deck.cards.length;
-
-    // useEffect(() => {
-    //     if(!isLastCard) {
-    //         return;
-    //     }
-
-    //     const shouldRestart = window.confirm("Restart cards?");
-    //     if (shouldRestart) {
-    //         setCardIndex(0);
-    //         setFlipped(false);
-    //         setClicked(false);
-    //     } else {
-    //         navigate('/'); //go to home screen
-    //     }
-    // }, [isLastCard]);
 
     function askUserIfRestart() {
         const shouldRestart = window.confirm("Restart cards?");

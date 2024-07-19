@@ -16,7 +16,7 @@ function DeckList({ decks }) {
     {/*check if there are decks*/}
     {
       decks.length > 0 ?
-         decks.map(deck => <DeckInromation key={deck.id} deck={deck} enableEditing={false} decks={decks}/>) :
+        decks.map(deck => <DeckInromation key={deck.id} deck={deck} enableEditing={false} decks={decks} />) :
         <NotFound />
     }
   </>

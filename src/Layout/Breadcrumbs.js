@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-function DisplayBreadcrumbs({children}) {
+function DisplayBreadcrumbs({ children }) {
     return <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
             <li className="breadcrumb-item"><a href="/">

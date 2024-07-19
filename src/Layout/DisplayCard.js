@@ -6,10 +6,10 @@ function Displaycard({ card, deck }) {
     async function handleDeleteCard() {
         const shouldDelete = window.confirm("Delete this card? You will not be able to recover it.");
         if (shouldDelete) {
-        // use: export async function deleteCard(cardId, signal) {
-        await deleteCard(card.id);
-        deck.cards.splice(deck.cards.indexOf(card), 1);
-        window.location.reload();
+            // use: export async function deleteCard(cardId, signal) {
+            await deleteCard(card.id);
+            deck.cards.splice(deck.cards.indexOf(card), 1);
+            window.location.reload();
         }
         else {
             return;

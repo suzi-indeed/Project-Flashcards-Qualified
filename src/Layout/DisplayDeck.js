@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import DeckInromation from './DeckInformation';
 import { Link, Route, Routes, useParams } from "react-router-dom";
 import DisplayCard from './DisplayCard';
@@ -11,15 +11,12 @@ import { readDeck } from "../utils/api";
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
-  //const deck = decks.find(deck => deck.id == deckId);
-
   const [deck, setDeck] = useState(loadDeck);
 
   async function loadDeck() {
-      const deck = await readDeck(deckId);
-      //console.log("deck", deck);
-      setDeck(deck);
-      return deck;
+    const deck = await readDeck(deckId);
+    setDeck(deck);
+    return deck;
   }
 
   if (!deck?.id) {
@@ -56,28 +53,3 @@ function DisplayDeck({ decks }) {
 }
 
 export default DisplayDeck;
-
-/*
-
-[
-{
-  "id": 1,
-  "name": "Rendering in React",
-  "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. ",
-  "cards": [
-    {
-    "id": 1,
-    "front": "Differentiate between Real DOM and Virtual DOM.",
-    "back": "Virtual DOM updates are faster but do not directly update the HTML",
-    "deckId": 1
-    },
-
-    {
-    "id": 2,
-    "front": "How do you modify the state of a different React component?",
-    "back": "Not at all! State is visible to the component only.",
-    "deckId": 1
-},
-....
-
-*/
