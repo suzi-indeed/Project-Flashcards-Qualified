@@ -6,6 +6,7 @@ import EditCard from './EditCard';
 import StudyDeck from './StudyDeck';
 import EditDeck from './EditDeck';
 import AddCard from './AddCard';
+import DisplayBreadcrumbs from './Breadcrumbs';
 
 function DisplayDeck({ decks }) {
   const { deckId } = useParams();
@@ -17,23 +18,19 @@ function DisplayDeck({ decks }) {
 
   return (
     <>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">
-            <i class="oi oi-home"></i> Home
-          </a></li>
-          <li class="breadcrumb-item active" aria-current="page">{`${deck.name}`}</li>
-        </ol>
-      </nav>
       <Routes>
         {/* "decks/:deckId/*" */}
         <Route path="study" element={<StudyDeck decks={decks} />} />
         <Route path="cards/:cardId/edit" element={<EditCard deck={deck} />} />
-        <Route path="edit" element={<EditDeck deck={deck}/>}/>
-        <Route path="cards/new" element={<AddCard deck={deck}/>}/>
+        <Route path="edit" element={<EditDeck deck={deck} />} />
+        <Route path="cards/new" element={<AddCard deck={deck} />} />
         <Route path="" element={
           <>
-            <DeckInromation deck={deck} enableEditing={true} decks={decks}/>
+            <DisplayBreadcrumbs>
+              <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
+            </DisplayBreadcrumbs>
+
+            <DeckInromation deck={deck} enableEditing={true} decks={decks} />
             <br />
             <h3>Cards</h3>
             <div style={{ display: "flex" }} />

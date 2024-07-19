@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { updateCard } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import DisplayBreadcrumbs from "./Breadcrumbs";
 
 
 function EditCard({ deck }) {
@@ -13,7 +14,7 @@ function EditCard({ deck }) {
 
     const navigate = useNavigate();
 
-    async function handleSubmit(){
+    async function handleSubmit() {
         card.front = front;
         card.back = back;
         await updateCard(card);
@@ -23,23 +24,25 @@ function EditCard({ deck }) {
     if (!card) {
         return <p>Card not found</p>;
     }
-    {/* TODO: edit the breadcrumb navigation bar to include the card's name 
-        it's currently the one from DisplayDeck */}
 
     return <>
+        <DisplayBreadcrumbs>
+            <Link to={`/decks/${deck.id}`}>{deck.name}</Link>&nbsp;/ Edit Card {card.id}
+        </DisplayBreadcrumbs>
+
         <h3>Edit Card</h3>
         <label for="card-front">Front</label>
         <br />
-        <textarea class="form-control" rows="3" name="card-front" type="text" onChange={ev=>setFront(ev.target.value)}>{front}</textarea>
+        <textarea class="form-control" rows="3" name="card-front" type="text" onChange={ev => setFront(ev.target.value)}>{front}</textarea>
 
         <br />
 
         <label for="card-back">Back</label>
         <br />
-        <textarea className="form-control" rows="3" name="card-back" type="text" onChange={ev=>setBack(ev.target.value)} >{back}</textarea>
+        <textarea className="form-control" rows="3" name="card-back" type="text" onChange={ev => setBack(ev.target.value)} >{back}</textarea>
         <br />
 
-        <Link to={`/decks/${deck.id}`} button type="cancel" class="btn btn-secondary">Cancel</Link>
+        <Link to={`/decks/${deck.id}`} class="btn btn-secondary">Cancel</Link>
         {" "}
 
         <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Submit</button>

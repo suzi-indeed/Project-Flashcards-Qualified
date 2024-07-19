@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import DisplayBreadcrumbs from './Breadcrumbs';
 
 function StudyDeck({ decks }) {
     const [cardIndex, setCardIndex] = useState(0);
@@ -10,8 +11,6 @@ function StudyDeck({ decks }) {
     const navigate = useNavigate();
     const { deckId } = useParams();
     const deck = decks.find(deck => deck.id == deckId);
-
-    {/* TODO: update the breadcrumb navigation bar */ }
 
     {/*instead of: 
         onClick={()=>setFlipped(!flipped)}
@@ -78,6 +77,10 @@ function StudyDeck({ decks }) {
 
     return (
         <div>
+            <DisplayBreadcrumbs>
+                <Link to={`/decks/${deck.id}`}>{deck.name}</Link>&nbsp;/ Study
+            </DisplayBreadcrumbs>
+
             <h3>Study: {deck.name}</h3>
             <div className="card">
                 <div className="card-body" >
