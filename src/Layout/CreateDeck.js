@@ -24,22 +24,22 @@ function CreateDeck({ decks }) {
             <DisplayBreadcrumbs>Create Deck</DisplayBreadcrumbs>
 
             <h1>Create Deck</h1>
-            <label for="deck-name">Name</label>
+            <label htmlFor="deck-name">Name</label>
             <br />
-            <input class="form-control" name="deck-name" type="text" placeholder="Deck Name"
+            <input className="form-control" name="deck-name" type="text" placeholder="Deck Name"
                 value={name} onChange={ev => setName(ev.target.value)} />
 
             <br />
 
-            <label for="deck-description">Description</label>
+            <label htmlFor="deck-description">Description</label>
             <br />
-            <textarea class="form-control" rows="5" name="deck-description" type="text" placeholder="Brief description of the deck"
+            <textarea className="form-control" rows="5" name="deck-description" type="text" placeholder="Brief description of the deck"
                 value={description} onChange={ev => setDescription(ev.target.value)} />
             <br />
 
-            <Link to="/" class="btn btn-secondary">Cancel</Link>
+            <Link to="/" className="btn btn-secondary">Cancel</Link>
             {" "}
-            <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
         </div>
     )
 }

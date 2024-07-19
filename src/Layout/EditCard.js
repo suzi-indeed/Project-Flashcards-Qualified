@@ -31,21 +31,21 @@ function EditCard({ deck }) {
         </DisplayBreadcrumbs>
 
         <h3>Edit Card</h3>
-        <label for="card-front">Front</label>
+        <label htmlFor="card-front">Front</label>
         <br />
-        <textarea class="form-control" rows="3" name="card-front" type="text" onChange={ev => setFront(ev.target.value)}>{front}</textarea>
+        <textarea className="form-control" rows="3" name="card-front" type="text" onChange={ev => setFront(ev.target.value)}>{front}</textarea>
 
         <br />
 
-        <label for="card-back">Back</label>
+        <label htmlFor="card-back">Back</label>
         <br />
         <textarea className="form-control" rows="3" name="card-back" type="text" onChange={ev => setBack(ev.target.value)} >{back}</textarea>
         <br />
 
-        <Link to={`/decks/${deck.id}`} class="btn btn-secondary">Cancel</Link>
+        <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
         {" "}
 
-        <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Submit</button>
+        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
     </>
 }
 

@@ -7,7 +7,7 @@ function DeckList({ decks }) {
 
   return <>
     <Link className="btn btn-secondary" to="/decks/new">
-      <i class="oi oi-plus"></i>
+      <i className="oi oi-plus"></i>
       {' '}
       Create Deck
     </Link>
@@ -16,7 +16,7 @@ function DeckList({ decks }) {
     {/*check if there are decks*/}
     {
       decks.length > 0 ?
-         decks.map(deck => <DeckInromation deck={deck} enableEditing={false} decks={decks}/>) :
+         decks.map(deck => <DeckInromation key={deck.id} deck={deck} enableEditing={false} decks={decks}/>) :
         <NotFound />
     }
   </>

@@ -4,16 +4,20 @@ import DeckList from "./DeckList";
 import { Route, Routes } from "react-router-dom";
 import CreateDeck from "./CreateDeck";
 import DisplayDeck from "./DisplayDeck";
+import { listDecks } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
   // load data from http://localhost:8080/decks?_embed=cards with useeffect
+  // replace with: export async function listDecks(signal) {
+
   useEffect(() => {
 
     async function loadDecks() {
-      const response = await fetch("http://localhost:8080/decks?_embed=cards");
-      const data = await response.json();
-      setDecks(data);
+      //const response = await fetch("http://localhost:8080/decks?_embed=cards");
+      const response = await listDecks();
+      console.log("got this: ",response);
+      setDecks(response);
     }
     loadDecks();
   }, []);

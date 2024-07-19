@@ -68,7 +68,7 @@ function StudyDeck({ decks }) {
             <h4>Not Enough cards.</h4>
             <p>You need at least 3 cards to study. There are {deck.cards.length} cards in this deck.</p>
             <Link className="btn btn-primary" style={{ margin: "4px" }} to={`/decks/${deck.id}/cards/new`} >
-                <i class="oi oi-plus"></i>
+                <i className="oi oi-plus"></i>
                 {' '}
                 Add Cards
             </Link>
@@ -86,9 +86,9 @@ function StudyDeck({ decks }) {
                 <div className="card-body" >
                     <h4>Card {cardIndex + 1} of {deck.cards.length}</h4>
                     <p>{flipped ? deck.cards[cardIndex]?.back : deck.cards[cardIndex]?.front}</p>
-                    <button type="button" class="btn btn-secondary" onClick={handleClick}>Flip</button>
+                    <button type="button" className="btn btn-secondary" onClick={handleClick}>Flip</button>
                     {' '}
-                    {clicked && <button type="button" class="btn btn-primary" onClick={handleNextClick}>Next</button>}
+                    {clicked && <button type="button" className="btn btn-primary" onClick={handleNextClick}>Next</button>}
                 </div>
             </div>
         </div>

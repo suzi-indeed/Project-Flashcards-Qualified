@@ -31,23 +31,23 @@ function AddCard({ deck }) {
             </DisplayBreadcrumbs>
 
             <h1>Add Card</h1>
-            <label for="card-front">Front</label>
+            <label htmlFor="card-front">Front</label>
             <br />
-            <textarea class="form-control" rows="3" name="card-front" type="text"
+            <textarea className="form-control" rows="3" name="card-front" type="text"
                 placeholder="Front side of card" onChange={(ev) => setFront(ev.target.value)} value={front}>
             </textarea>
 
             <br />
-            <label for="card-back">Back</label>
+            <label htmlFor="card-back">Back</label>
             <br />
             <textarea className="form-control" rows="3" name="card-back" type="text"
                 placeholder="Back side of card" onChange={(ev) => setBack(ev.target.value)} value={back}>
             </textarea>
 
             <br />
-            <Link to="/" class="btn btn-secondary">Cancel</Link>
+            <Link to="/" className="btn btn-secondary">Cancel</Link>
             {" "}
-            <button type="submit" class="btn btn-primary" onClick={handleSave}>Save</button>
+            <button type="submit" className="btn btn-primary" onClick={handleSave}>Save</button>
 
         </div>
     )

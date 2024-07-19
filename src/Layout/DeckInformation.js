@@ -21,7 +21,7 @@ function DeckInromation({ deck, enableEditing, decks }) {
             <div className="card-body" >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     {/*Header and counter*/}
-                    <h5 class="card-title">{deck.name} </h5>
+                    <h5 className="card-title">{deck.name} </h5>
                     <p>{deck.cards?.length ?? 0} cards</p>
                 </div>
 
@@ -45,14 +45,14 @@ function DeckInromation({ deck, enableEditing, decks }) {
 
                 {/*Study button*/}
                 <Link to={`/decks/${deck.id}/study`}>
-                    <button className="btn btn-primary" style={{ margin: "4px" }}><i class="oi oi-book"></i> Study</button>
+                    <button className="btn btn-primary" style={{ margin: "4px" }}><i className="oi oi-book"></i> Study</button>
                 </Link>
 
                 {/*Add Cards button - TODO: build the screen "Add Card"*/}
                 {enableEditing ?
                     <>
                         <Link className="btn btn-primary" style={{ margin: "4px" }} to={`/decks/${deck.id}/cards/new`} >
-                            <i class="oi oi-plus"></i>
+                            <i className="oi oi-plus"></i>
                             {' '}
                             Add Cards
                         </Link>

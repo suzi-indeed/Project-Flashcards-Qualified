@@ -20,22 +20,22 @@ function EditDeck({ deck }) {
             </DisplayBreadcrumbs>
 
             <h1>Edit Deck</h1>
-            <label for="deck-name">Name</label>
+            <label htmlFor="deck-name">Name</label>
             <br />
-            <textarea onChange={ev => setName(ev.target.value)} class="form-control" name="deck-name" type="text" placeholder="Deck Name">
+            <textarea onChange={ev => setName(ev.target.value)} className="form-control" name="deck-name" type="text" placeholder="Deck Name">
                 {name}
             </textarea>
-            <label for="deck-description">Description</label>
+            <label htmlFor="deck-description">Description</label>
             <br />
 
-            <textarea onChange={ev => setDescription(ev.target.value)} class="form-control" rows="5" name="deck-description" type="text" placeholder="Brief description of the deck" >
+            <textarea onChange={ev => setDescription(ev.target.value)} className="form-control" rows="5" name="deck-description" type="text" placeholder="Brief description of the deck" >
                 {description}
             </textarea>
             <br />
 
-            <Link to="/" button type="cancel" class="btn btn-secondary">Cancel</Link>
+            <Link to="/" button type="cancel" className="btn btn-secondary">Cancel</Link>
             {" "}
-            <button type="submit" class="btn btn-primary" onClick={onSubmit}>Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={onSubmit}>Submit</button>
         </div>
     );
 }
