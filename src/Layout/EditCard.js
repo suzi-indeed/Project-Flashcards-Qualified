@@ -1,20 +1,17 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { updateCard } from "../utils/api";
 import { useNavigate } from "react-router-dom";
-import DisplayBreadcrumbs from "./Breadcrumbs";
+import CardComponent from "./CardComponent";
 
 
 function EditCard({ deck }) {
     const { cardId } = useParams();
     let card = deck.cards.find(card => card.id == cardId);
 
-    const [front, setFront] = React.useState(card.front);
-    const [back, setBack] = React.useState(card.back);
-
     const navigate = useNavigate();
 
-    async function handleSubmit() {
+    async function handleSubmit(front, back) {
         card.front = front;
         card.back = back;
         await updateCard(card);
@@ -25,28 +22,8 @@ function EditCard({ deck }) {
         return <p>Card not found</p>;
     }
 
-    return <>
-        <DisplayBreadcrumbs>
-            <Link to={`/decks/${deck.id}`}>{deck.name}</Link>&nbsp;/ Edit Card {card.id}
-        </DisplayBreadcrumbs>
+    return <CardComponent deck={deck} handleSave={handleSubmit} isNewCard={false} card={card} />
 
-        <h3>Edit Card</h3>
-        <label htmlFor="card-front">Front</label>
-        <br />
-        <textarea className="form-control" rows="3" name="card-front" type="text" onChange={ev => setFront(ev.target.value)}>{front}</textarea>
-
-        <br />
-
-        <label htmlFor="card-back">Back</label>
-        <br />
-        <textarea className="form-control" rows="3" name="card-back" type="text" onChange={ev => setBack(ev.target.value)} >{back}</textarea>
-        <br />
-
-        <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
-        {" "}
-
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-    </>
 }
 
 export default EditCard;
